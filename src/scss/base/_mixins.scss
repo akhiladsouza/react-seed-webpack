@@ -1,0 +1,18 @@
+@mixin font-size($size-value: 16) {
+	/* stylelint-disable */
+	font-size: $size-value + px;
+	font-size: rem-calc($size-value);
+	/* stylelint-enable */
+}
+
+@mixin clearfix {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}

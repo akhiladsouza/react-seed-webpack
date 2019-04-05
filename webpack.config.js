@@ -1,28 +1,49 @@
 const path = require("path");
 const webpack = require("webpack");
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: "./src/index.js",
-    mode: "development",
+    entry: {
+        app: './src/js/index.js',
+    },
+    mode: 'development',
+    output: {
+        filename: '[name].js',
+        path: __dirname + '/dist'
+    },
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
-                exclude: /(node_modules|bower_components)/,
-                loader: "babel-loader",
-                options: { presets: ["@babel/env"] }
+                enforce: 'pre',
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
             },
             {
-                test: /\.css$/,
-                use: ["style-loader", "css-loader"]
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+            },
+            {
+                test: /(\.css|\.scss)$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    },
+                    {
+                        loader: 'sass-loader'
+                    }
+                ]
             }
         ]
-    },
-    resolve: { extensions: ["*", ".js", ".jsx"] },
-    output: {
-        path: path.resolve(__dirname, "dist/"),
-        publicPath: "/dist/",
-        filename: "bundle.js"
     },
     devServer: {
         contentBase: path.join(__dirname, "public/"),
@@ -30,5 +51,13 @@ module.exports = {
         publicPath: "http://localhost:3000/dist/",
         hotOnly: true
     },
-    plugins: [new webpack.HotModuleReplacementPlugin()]
+    plugins: [
+        new MiniCssExtractPlugin('bundle.css'),
+        new webpack.HotModuleReplacementPlugin(),
+        new StyleLintPlugin({
+            configFile: '.stylelintrc'
+        }),
+        new FriendlyErrorsWebpackPlugin()
+    ],
+    devtool: 'eval-cheap-module-source-map'
 };

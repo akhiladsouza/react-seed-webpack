@@ -1,0 +1,22 @@
+/* Base colors */
+$light-blue: #008CBA;
+$green: #377a1a;
+$red: #cc3333;
+$white: #ffffff;
+$white-smokey: #fafafa;
+$grey: #333333;
+$black: #000000;
+$transparent-black: rgba(0, 0, 0, 0.5);
+
+/* App Colors */
+$primary-background-color: $white;
+$secondary-background-color: $white-smokey;
+
+$primary-transparent-background: $transparent-black;
+
+$primary-text-color: $grey;
+$secondary-text-color: $grey;
+
+$primary-heading-color: $light-blue;
+$active-link-color: $light-blue;
+$primary-placeholder-color: $grey;

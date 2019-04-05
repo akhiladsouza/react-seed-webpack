@@ -1,0 +1,126 @@
+p {
+    color: $primary-text-color;
+    line-height: 24px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+label,
+input,
+textarea,
+th,
+td,
+address,
+.row {
+    font-family: $site-font;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $primary-heading-color;
+    font-weight: 600;
+
+    span {
+        font-weight: inherit;
+        font-size: inherit;
+    }
+}
+
+p,
+li,
+span,
+label,
+textarea,
+input,
+th,
+td,
+address {
+    @include font-size(15);
+
+    font-weight: 300;
+}
+
+strong span {
+    font-weight: 700;
+}
+
+a,
+a:hover,
+a:active {
+    color: $active-link-color;
+    text-decoration: none;
+}
+
+input {
+    &::-webkit-input-placeholder,
+    &:-ms-input-placeholder,
+    &::-moz-placeholder {
+        @include font-size(14);
+
+        color: $primary-placeholder-color;
+
+        @media #{$xlarge-up}{
+            @include font-size(16);
+        }
+    }
+}
+
+h1 {
+    @include font-size(36);
+
+    @media #{$xlarge-up} {
+        @include font-size(42);
+    }
+}
+
+h2 {
+    @include font-size(26);
+
+    letter-spacing: -2px;
+
+    @media #{$xlarge-up} {
+        @include font-size(36);
+    }
+}
+
+h3 {
+    @include font-size(20);
+
+    letter-spacing: -2px;
+
+    @media #{$xlarge-up} {
+        @include font-size(24);
+    }
+}
+
+h4 {
+    @include font-size(16);
+
+    @media #{$xlarge-up} {
+        @include font-size(20);
+    }
+}
+
+h5 {
+    @include font-size(15);
+}
+
+h6 {
+    @include font-size(14);
+
+    @media #{$xlarge-up} {
+        @include font-size(15);
+    }
+}
