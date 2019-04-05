@@ -1,0 +1,10 @@
+# IDE
+.idea/
+*.iml
+.settings
+.project
+.classpath
+../.history/
+
+# NODE
+node_modules
